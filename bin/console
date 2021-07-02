@@ -14,4 +14,3 @@ set_config
 # (If you use this, don't forget to add pry to your Gemfile!)
 require "pry"
 Pry.start
-require "pry-byebug"; binding.pry

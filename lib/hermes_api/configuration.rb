@@ -6,17 +6,22 @@ module HermesAPI
   PRODUCTION_SITE = "https://www.hermes-europe.co.uk"
   TESTING_SITE = "https://sit.hermes-europe.co.uk"
 
-  def self.config
-    @config ||= Configuration.new
-  end
+  class << self
+    def config
+      @config ||= Configuration.new
+    end
 
-  def self.config=(config)
-    @config = config
-  end
+    def after_configure
+      HermesAPI::Base.site = config.env.to_s == "production" ? PRODUCTION_SITE : TESTING_SITE
+      HermesAPI::Base.proxy = config.proxy
+      HermesAPI::Base.user = config.user
+      HermesAPI::Base.password = config.password
+    end
 
-  def self.configure
-    yield config
+    def configure
+      yield config
 
-    HermesAPI::Base.site = config.env.to_s == "production" ? PRODUCTION_SITE : TESTING_SITE
+      after_configure
+    end
   end
 end

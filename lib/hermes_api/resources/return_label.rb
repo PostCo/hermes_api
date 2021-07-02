@@ -10,20 +10,21 @@ module HermesAPI
     DEFAULT_ATTRS = {
       clientId: "",
       clientName: "",
+      childClientId: "",
+      childClientName: "",
       sourceOfRequest: "",
       collectionRoutingRequestEntries: [{
         customer: {
           address: {
-            title: "",
             firstName: "",
             lastName: "",
-            houseNo: "",
+            houseName: "",
             streetName: "",
-            countryCode: "",
+            addressLine1: "",
             postCode: "",
             city: "",
-            addressLine1: "",
             region: ""
+            countryCode: "",
           },
           mobilePhoneNo: "",
           email: "",
@@ -65,67 +66,3 @@ module HermesAPI
     alias_method :tracking_number, :tracking_numbers
   end
 end
-
-# body = {
-#   clientId: "2492",
-#   clientName: "Love Leggings",
-#   sourceOfRequest: "CLIENTWS",
-#   collectionRoutingRequestEntries: [
-#     {
-#       customer: {
-#         address: {
-#           title: "Mr",
-#           firstName: "Test",
-#           lastName: "Customer",
-#           houseNo: "1",
-#           streetName: "Capitol Close",
-#           countryCode: "GB",
-#           postCode: "LS27 0WH",
-#           city: "Leeds",
-#           addressLine1: "Morley",
-#           region: "West Yorkshire"
-#         },
-#         mobilePhoneNo: "789",
-#         email: "si@si.com",
-#         customerReference1: "Ref1"
-#       },
-#       countryOfOrigin: "GB"
-#     }
-#   ]
-# }
-
-# faulty_body = {
-#   clientId: "2492",
-#   clientName: "Love Leggings",
-#   sourceOfRequest: "CLIENTWS",
-#   collectionRoutingRequestEntries: [
-#     {
-#       customer: {
-#         address: {
-#           postCode: "LS27 0WH",
-#           city: "Leeds",
-#           addressLine1: "Morley",
-#           region: "West Yorkshire"
-#         },
-#         mobilePhoneNo: "789",
-#         email: "si@si.com",
-#         customerReference1: "Ref1"
-#       },
-#       countryOfOrigin: "GB"
-#     },
-#     {
-#       customer: {
-#         address: {
-#           postCode: "LS27 0WH",
-#           city: "Leeds",
-#           addressLine1: "Morley",
-#           region: "West Yorkshire"
-#         },
-#         mobilePhoneNo: "789",
-#         email: "si@si.com",
-#         customerReference1: "Ref1"
-#       },
-#       countryOfOrigin: "GB"
-#     }
-#   ]
-# }

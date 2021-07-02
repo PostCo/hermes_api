@@ -5,6 +5,7 @@ require "active_resource"
 
 module HermesAPI
   require "hermes_api/configuration"
+  require "hermes_api/creation_error"
   require "hermes_api/connection"
 
   require "hermes_api/resources/base"

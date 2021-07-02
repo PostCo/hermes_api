@@ -1,12 +1,9 @@
 module HermesAPI
   class Base < ActiveResource::Base
     self.format = :xml
-    # self.connection_class = HermesAPI::Connection
     self.include_format_in_path = false
-    self.proxy = HermesAPI.config.proxy
-    puts HermesAPI.config.proxy
-    self.user = HermesAPI.config.user
-    self.password = HermesAPI.config.password
+    self.connection_class = Connection
+
     headers["Content-Type"] = "text/xml"
 
     class << self
@@ -15,11 +12,13 @@ module HermesAPI
       end
 
       def with_session(user, password)
+        existing_user = self.user
+        existing_password = self.password
         self.user = user
         self.password = password
         yield
-        self.user = HermesAPI.config.user
-        self.password = HermesAPI.config.password
+        self.user = existing_user
+        self.password = existing_password
       end
     end
 

@@ -6,9 +6,10 @@ module HermesAPI
         payload[:request_uri] = "#{site.scheme}://#{site.host}:#{site.port}#{path}"
         payload[:result] = http.send(method, path, *arguments)
       end
-      # if result.body.include?("errorMessages")
-      #   raise HermesAPI::CreationError.new(result)
-      # end
+
+      if result.body.include?("errorMessages")
+        raise HermesAPI::CreationError.new(result)
+      end
       handle_response(result)
     rescue Timeout::Error => e
       raise TimeoutError.new(e.message)
