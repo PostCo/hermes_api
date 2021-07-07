@@ -23,8 +23,8 @@ module HermesAPI
             addressLine1: "",
             postCode: "",
             city: "",
-            region: ""
-            countryCode: "",
+            region: "",
+            countryCode: ""
           },
           mobilePhoneNo: "",
           email: "",
