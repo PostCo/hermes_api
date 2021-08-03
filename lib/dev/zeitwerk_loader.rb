@@ -8,6 +8,7 @@ loader.inflector.inflect(
 loader.push_dir("./lib")
 loader.collapse("./lib/hermes_api/resources")
 loader.ignore("#{__dir__}/config.rb")
+loader.ignore("./lib/hermes_api/cache.rb")
 loader.enable_reloading
 # loader.log!
 loader.setup

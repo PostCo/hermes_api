@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hermes_api (0.1.0)
+    hermes_api (0.2.1)
       activeresource (>= 4.1.0, < 6.0.0)
 
 GEM
@@ -127,4 +127,4 @@ DEPENDENCIES
   standard
 
 BUNDLED WITH
-   2.2.15
+   2.2.24
