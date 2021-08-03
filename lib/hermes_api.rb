@@ -14,6 +14,6 @@ module HermesAPI
   
   require "hermes_api/resources/o_auth"
   require "hermes_api/resources/json_base"
-  require "hermes_api/resources/print_in_store_qr"
+  require "hermes_api/resources/print_in_store_qr_code"
 
 end

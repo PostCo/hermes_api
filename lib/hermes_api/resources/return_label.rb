@@ -87,7 +87,7 @@ module HermesAPI
       customer = collectionRoutingRequestEntries[0].customer
       address = customer.address
 
-      self.print_in_store_qr_code = PrintInStoreQr.create(
+      self.print_in_store_qr_code = PrintInStoreQrCode.create(
         customer: {
           customerReference1: customer.customerReference1
         },
@@ -119,10 +119,6 @@ module HermesAPI
         serviceOffers: [],
         **attrs
       )
-    end
-
-    def base64_print_in_store_qr_code
-      as_json.dig("print_in_store_qr_code", "qrCode", "base64EncodedBytes")
     end
   end
 end
