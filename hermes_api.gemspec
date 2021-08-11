@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name = "hermes_api"
   spec.version = HermesAPI::VERSION
   spec.authors = ["Andy Chong"]
-  spec.email = ["andygg1996personal@gmail.com"]
+  spec.email = ["andy@postco.co"]
 
   spec.summary = "Unofficial Ruby object based Hermes UK API wrapper."
   spec.description = "Unofficial Ruby object based Hermes UK API wrapper."

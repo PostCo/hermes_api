@@ -11,9 +11,10 @@ module HermesAPI
 
   require "hermes_api/resources/base"
   require "hermes_api/resources/return_label"
-  
+
   require "hermes_api/resources/o_auth"
   require "hermes_api/resources/json_base"
   require "hermes_api/resources/print_in_store_qr_code"
-
+  require "hermes_api/resources/tracking_event"
+  require "hermes_api/resources/web_tracking"
 end

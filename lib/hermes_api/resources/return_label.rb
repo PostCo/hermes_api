@@ -66,18 +66,11 @@ module HermesAPI
 
     alias_method :tracking_number, :tracking_numbers
 
-    def request_print_in_store_qr_code(attrs = {
-      dimensions: {
-        depth: 15,
-        length: 20,
-        width: 15,
-        weight: 1
-      },
-      value: {
-        currency: "GBP",
-        amount: 10
-      }
-    })
+    def request_print_in_store_qr_code(**attrs)
+      if ([:dimensions, :value, :deliveryAddress] - attrs.keys).length > 0
+        raise ArgumentError, request_print_in_store_qr_code_error_message
+      end
+
       return nil if attributes["routingResponseEntries"].blank?
 
       entries = routingResponseEntries.routingResponseEntry
@@ -90,12 +83,6 @@ module HermesAPI
       self.print_in_store_qr_code = PrintInStoreQrCode.create(
         customer: {
           customerReference1: customer.customerReference1
-        },
-        deliveryAddress: {
-          name: "#{address.firstName} #{address.lastName}",
-          addressLine1: address.addressLine1,
-          countryCode: address.countryCode,
-          postcode: address.postCode
         },
         labelType: "RETURN",
         barcode: {
@@ -119,6 +106,34 @@ module HermesAPI
         serviceOffers: [],
         **attrs
       )
+    end
+
+    private
+
+    def request_print_in_store_qr_code_error_message
+      <<~HEREDOC
+      Missing attributes
+      Example:
+      HermesAPI::ReturnLabel#request_print_in_store_qr_code(
+        dimensions: {
+          depth: 15,
+          length: 20,
+          width: 15,
+          weight: 1
+        },
+        value: {
+          currency: 'GBP',
+          amount: 10
+        },
+        deliveryAddress: {
+          name: 'Don Joe',
+          addressLine1: 'Real Logic',
+          addressLine2: '4-4 Ridings Park, Eastern Way',
+          countryCode: 'GB',
+          postcode: 'WS117FJ'
+        }
+      )
+      HEREDOC
     end
   end
 end

@@ -1,9 +1,9 @@
 module HermesAPI
   class PrintInStoreQrCode < JsonBase
+    extend BearerTokenSetup
+
     self.element_name = ""
     self.prefix = "/client-print-in-store-api/v1/references"
-
-    OAUTH_AUDIENCE = "client-print-in-store-api"
 
     def load(attributes, remove_root = false, persisted = false)
       # remove the outer array before parsing the response body
