@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hermes_api (0.3.1)
+    hermes_api (0.4.0)
       activeresource (>= 4.1.0, < 6.0.0)
 
 GEM
