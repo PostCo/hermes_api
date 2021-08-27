@@ -1,7 +1,5 @@
 module HermesAPI
   class PrintInStoreQrCode < JsonBase
-    extend HermesAPI::BearerTokenSetup
-
     self.element_name = ""
     self.prefix = "/client-print-in-store-api/v1/references"
 

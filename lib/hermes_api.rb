@@ -5,7 +5,7 @@ require "active_resource"
 
 module HermesAPI
   require "hermes_api/cache"
-  require "hermes_api/bearer_token_setup"
+  require "hermes_api/bearer_auth"
   require "hermes_api/configuration"
   require "hermes_api/creation_error"
   require "hermes_api/connection"
