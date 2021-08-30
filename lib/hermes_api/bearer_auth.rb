@@ -1,11 +1,13 @@
 module HermesAPI
   module BearerAuth
     def with_oauth_session(api_key, client_id, client_secret)
+      existing_apikey = headers["apikey"]
+      existing_bearer_token = connection.bearer_token
       headers["apikey"] = api_key
       connection.bearer_token = fetch_token(client_id, client_secret)
       response = yield
-      connection.bearer_token = nil
-      headers["apikey"] = nil
+      headers["apikey"] = existing_apikey
+      connection.bearer_token = existing_bearer_token
       response
     rescue ActiveResource::UnauthorizedAccess => e
       clear_token_cache(client_id, client_secret)
