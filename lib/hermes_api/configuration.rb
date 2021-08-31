@@ -25,6 +25,10 @@ module HermesAPI
 
       HermesAPI::JsonBase.site = config.env.to_s == "production" ? JSON_PRODUCTION_SITE : JSON_TESTING_SITE
       HermesAPI::OAuth.site = config.env.to_s == "production" ? OAUTH_PRODUCTION_SITE : OAUTH_TESTING_SITE
+
+      if defined?(Rails) && Rails.respond_to?(:cache) && Rails.cache.is_a?(ActiveSupport::Cache::Store)
+        HermesAPI.cache = Rails.cache
+      end
     end
 
     def configure

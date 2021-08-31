@@ -23,6 +23,8 @@ module HermesAPI
 
     def self.find(barcode)
       uniqueId = format.decode(connection.get("#{prefix}/search/#{barcode}", headers).body).first
+      return nil if uniqueId.nil?
+
       find_single("", params: {uniqueIds: uniqueId})
     end
   end
