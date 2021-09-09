@@ -29,8 +29,13 @@ module HermesAPI
       super
     end
 
+    def load(attributes, remove_root = false, persisted = false)
+      attributes.deep_transform_keys! { |k| k.to_s.underscore }
+      super
+    end
+
     def to_xml(options = {})
-      super({root: self.class.root}.merge(options))
+      super({root: self.class.root, camelize: :lower}.merge(options))
     end
   end
 end

@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "pry"
 require "bundler/setup"
 require "dotenv/load"
 require "dev/zeitwerk_loader"
@@ -11,5 +12,4 @@ require "hermes_api"
 set_config
 
 # (If you use this, don't forget to add pry to your Gemfile!)
-require "pry"
 Pry.start

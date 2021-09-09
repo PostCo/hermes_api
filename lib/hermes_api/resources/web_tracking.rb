@@ -1,5 +1,9 @@
 module HermesAPI
   class WebTracking < ActiveResource::Base
+    # # Retrieve TrackingEvents from web site: https://www.myhermes.co.uk/track
+  
+    # HermesAPI::WebTracking.find("1234512345")
+    
     self.element_name = ""
     self.site = "https://api.hermesworld.co.uk"
     self.prefix = "/enterprise-tracking-api/v1/parcels"
@@ -18,7 +22,8 @@ module HermesAPI
 
     def load(attributes, remove_root = false, persisted = false)
       attributes = attributes.dig("results", 0)
-      super(attributes)
+      attributes.deep_transform_keys! { |k| k.to_s.underscore }
+      super
     end
 
     def self.find(barcode)

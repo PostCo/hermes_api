@@ -9,8 +9,8 @@ module HermesAPI
       super
     end
 
-    def qr_code
-      base64_data = as_json.dig("qrCode", "base64EncodedBytes")
+    def qr_code_image
+      base64_data = as_json.dig("qr_code", "base64_encoded_bytes")
       Base64.decode64(base64_data) if base64_data
     end
   end
