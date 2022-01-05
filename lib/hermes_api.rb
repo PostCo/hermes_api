@@ -2,6 +2,7 @@
 
 require_relative "hermes_api/version"
 require "active_resource"
+require "rexml/document"
 
 module HermesAPI
   require "hermes_api/bearer_auth"
