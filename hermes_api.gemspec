@@ -32,13 +32,14 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activeresource", ">= 4.1.0"
   spec.add_dependency "rexml", "~> 3.2", ">= 3.2.4"
 
-  spec.add_development_dependency "rspec", "~> 3.2"
   spec.add_development_dependency "dotenv"
-  spec.add_development_dependency "pry-byebug"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "guard-rspec"
-  spec.add_development_dependency "standard"
   spec.add_development_dependency "gem-release"
+  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-byebug"
+  spec.add_development_dependency "rspec", "~> 3.2"
+  spec.add_development_dependency "standard"
+  spec.add_development_dependency "zeitwerk"
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
